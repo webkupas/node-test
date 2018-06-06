@@ -4,8 +4,8 @@ const hbs = require('hbs')
 const port = process.env.PORT || 3000
 
 let app = express()
-hbs.registerPartials(__dirname + '/views/partials')
 
+hbs.registerPartials(__dirname + '/views/partials')
 hbs.registerHelper('getCurrentDate', () => new Date().getFullYear() )
 hbs.registerHelper('screamIt', (text) => text.toUpperCase())
 
@@ -41,6 +41,12 @@ app.get('/about', (req, res) => {
 
 app.get('/bad', (req, res) => {
   res.send('PAge not found')
+})
+
+app.get('/folio', (req, res) => {
+  res.render('folio.hbs', {
+    title: 'My Portfolio'
+  })
 })
 
 app.listen(port, () => {
